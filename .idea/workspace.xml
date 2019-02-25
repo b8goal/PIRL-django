@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b69374f-1daf-42dd-a5b5-91919a2d40eb" name="Default Changelist" comment="" />
+    <list default="true" id="4b69374f-1daf-42dd-a5b5-91919a2d40eb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/urls.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="953" />
     <option name="y" value="-1080" />
     <option name="width" value="974" />
@@ -71,7 +73,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="-1080" width="974" height="1087" extended-state="1" />
+    <frame x="953" y="-1080" width="974" height="1087" extended-state="0" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
