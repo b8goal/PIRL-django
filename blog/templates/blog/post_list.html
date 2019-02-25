@@ -7,16 +7,13 @@
             <h1><a href="">AI & Big Data Project 2조</a></h1>
         </div>
 
+       {% for post in posts %}
         <div>
-            <p>published: 2019.02.25, 14:45</p>
-            <h2><a href="">First post</a></h2>
-            <p>Hello! world</p>
+            <p>published: {{ post.published_date }}</p>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
+        {% endfor %}
 
-        <div>
-            <p>published: 2019.02.25, 15:00</p>
-            <h2><a href="">Scond post</a></h2>
-            <p>Good Bye! world</p>
-        </div>
     </body>
 </html>
