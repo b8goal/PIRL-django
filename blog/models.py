@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -17,3 +16,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class train_accuracy_data(models.Model):
+    train_accuracy = models.FloatField(null=True, blank=True)
+
+class test_accuracy_data(models.Model):
+    test_accuracy = models.FloatField(null=True ,blank=True)

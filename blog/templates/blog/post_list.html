@@ -1,6 +1,24 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+        <h1>Decision_Tree</h1>
+        <div class = "Accuracy_Data">
+            <table class = "table table-striped">
+                <thead>
+                <tr>
+                    <td><B>Training 정확도</B></td>
+                    <td><B>Test 정확도</b></td>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td> {{train_Accuracy_Data}}%</td>
+                    <td>{{test_Accuracy_Data}}%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     {% for post in posts %}
         <div class="post">
             <div class="date">
@@ -9,5 +27,8 @@
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
+
+
     {% endfor %}
+
 {% endblock %}

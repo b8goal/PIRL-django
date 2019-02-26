@@ -1,0 +1,8 @@
+digraph Tree {
+node [shape=box, style="filled", color="black"] ;
+0 [label="식전혈당(공복혈당) <= 126.5\nsamples = 175174\nvalue = [163876, 11298]", fillcolor="#e58139ed"] ;
+1 [label="samples = 163876\nvalue = [163876, 0]", fillcolor="#e58139ff"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="samples = 11298\nvalue = [0, 11298]", fillcolor="#399de5ff"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+}
