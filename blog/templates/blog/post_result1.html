@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Django Highcharts Example</title>
+    </head>
+    <body>
+      <div id="container"></div>
+      <script src="https://code.highcharts.com/highcharts.src.js"></script>
+      <script>
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '환자의 질병 위험도'
+            },
+            xAxis: {
+                categories: ['환자']
+            },
+            yAxis: {
+                title: {
+                    text: '위험도 수치'
+                },
+            },
+            series: [{
+                name: '당뇨병 위험도',
+                data: [{{a}}],
+            }, {
+                name: '고혈압 위험도',
+                data: [{{b}}]
+            }, {
+                name: '이상지질혈증 위험도',
+                data: [{{c}}]
+            }],
+        });
+      </script>
+    </body>
+    </html>
+
+
+{% endblock %}

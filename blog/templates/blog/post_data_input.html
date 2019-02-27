@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class="post">
+        <h1>질병 위험도 예측</h1><br><br>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button tpye="submit" class="save btn btn-defult">제출</button>
+        </form>
+    </div>
+{% endblock %}
