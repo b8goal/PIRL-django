@@ -55,24 +55,12 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
-def M1_simple_upload2(request):
-    if request.method == 'POST':
-        train_resource = TrainResource()
-        dataset = Dataset()
-        new_train = request.FILES['myfile2']
-
-        imported_data = dataset.load(new_train.read())
-        result = train_resource.import_data(dataset, dry_run=True)  # Test the data import
-
-        if not result.has_errors():
-            train_resource.import_data(dataset, dry_run=False)  # Actually import now
-
-    return render(request, 'core/simple_upload2.html')
-
 def post_data_input(request):
     if request.method == "POST":
         form = M1_dataForm(request.POST)
+        print(123)
         if form.is_valid():
+            print(456)
             post = form.save(commit=False)
             post.save()
 
@@ -91,10 +79,11 @@ def post_data_input(request):
                         '알콜성간염여부' :[post.alcohol_hepatitis],
                         }
             data = pd.DataFrame(raw_data)
+            print(data)
             a,b,c= test_model(data)
             mx = int(max(a,b,c))
-            mx=50
             return render(request, 'blog/post_result1.html', {'a':a,'b':b,'c':c,'mx':mx})
     else:
+        print(789)
         form = M1_dataForm()
     return render(request, 'blog/post_data_input.html',{'form':form})

@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 <div class ="col-xs-6 col-sm-6 col-md-6">
                                     <label for="id_bmi"><font color ="black">BMI 지수</font></label>
-                                    <input type="number" name="age" required id="id_bmi" class="form-control input-sm" placeholder="BMI를 입력해주세요.">
+                                    <input type="number" name="bmi" required id="id_bmi" class="form-control input-sm" placeholder="BMI를 입력해주세요.">
                                 </div>
                             </div>
 
@@ -97,7 +97,7 @@
                             <div class="form-group">
                                 <div class ="col-xs-6 col-sm-6 col-md-6">
                                 <label for="id_location"><font color ="black">지역</font></label>
-                                <select name="cavity_screen" id="id_location" class="form-control input-sm">
+                                <select name="location" id="id_location" class="form-control input-sm">
                                  <option value="11">서울</option>
                                   <option value="26">부산</option>
                                   <option value="27">대구</option>
@@ -198,13 +198,22 @@
                                     <div class="form-group">
                                         <label for="id_alcohol_hepatitis"><font color ="black">음주성 간염 상태</font></label>
                                         <select name="alcohol_hepatitis" id="id_alcohol_hepatitis" class="form-control input-sm">
+                                            <option value="0">정상</option>
                                             <option value="1">알콜성 간염</option>
-                                            <option value="2">정상</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" value="Register" class="btn btn-info btn-block">
+
+                             <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_old"><font color ="black">나이</font></label>
+                                        <input type="number" name="old" required id="id_old" class="form-control input-sm" placeholder="수축기 혈압을 입력해주세요.">
+                                    </div>
+                                </div>
+                             </div>
+                            <button type="submit" class="btn btn-info btn-block">제출</button>
                         </form>
                     </div>
                 </div>

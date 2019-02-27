@@ -16,12 +16,14 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-ALCOHOL_CHOICES=(
+
+
+ALCOHOL_CHOICES =(
     (1, '알콜성 간염'),
-    (2, '정상')
+    (0, '정상')
 )
 
-SMOKE_CHOICES=(
+SMOKE_CHOICES =(
     (1, '비흡연'),
     (2, '금연'),
     (3, '흡연')
