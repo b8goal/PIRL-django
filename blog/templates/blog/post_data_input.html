@@ -1,10 +1,233 @@
-{% extends 'blog/base.html' %}
-{% block content %}
-    <div class="post">
-        <h1>질병 위험도 예측</h1><br><br>
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button tpye="submit" class="save btn btn-defult">제출</button>
-        </form>
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html lang="ko">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>AI big data 2조</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 {
+    background-color: #417690; /* Green */
+    color: #000000;
+  }
+  .bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #000000;
+  }
+  .bg-3 {
+    background-color: #474e5d; /* White */
+    color: #555555;
+  }
+  .bg-4 {
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">AI · Big data B반 2조</a>
     </div>
-{% endblock %}
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container" id="container1">
+        <div class="row centered-form">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title text-center">정보를 입력해 주세요</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form method="POST" class="post-form">{% csrf_token %}
+                            <div class="form-group">
+                                <div class ="col-xs-6 col-sm-6 col-md-6">
+                                    <label for="id_bmi"><font color ="black">BMI 지수</font></label>
+                                    <input type="number" name="age" required id="id_bmi" class="form-control input-sm" placeholder="BMI를 입력해주세요.">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class ="col-xs-6 col-sm-6 col-md-6">
+                                <label for="id_location"><font color ="black">지역</font></label>
+                                <select name="cavity_screen" id="id_location" class="form-control input-sm">
+                                 <option value="11">서울</option>
+                                  <option value="26">부산</option>
+                                  <option value="27">대구</option>
+                                  <option value="29">인천</option>
+                                  <option value="30">대전</option>
+                                  <option value="31">울산</option>
+                                  <option value="36">세종</option>
+                                  <option value="41">경기도</option>
+                                  <option value="42">강원도</option>
+                                  <option value="43">충북</option>
+                                  <option value="44">충남</option>
+                                  <option value="45">전북</option>
+                                  <option value="46">전남</option>
+                                  <option value="47">경북</option>
+                                  <option value="48">경남</option>
+                                  <option value="49">제주</option>
+                                </select>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_triglycerides"><font color ="black">트리글리세라이드</font></label>
+                                        <input type="number" name="triglycerides" required id="id_triglycerides" class="form-control input-sm" placeholder="트리글리세라이드를 입력해주세요.">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_hdl"><font color ="black">HDL 지수</font></label>
+                                        <input type="number" name="hdl" required id="id_hdl" class="form-control input-sm" placeholder="HDL 콜레스테롤을 입력해주세요.">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_ldl"><font color ="black">HDL 지수</font></label>
+                                        <input type="number" name="ldl" required id="id_ldl" class="form-control input-sm" placeholder="LDL 콜레스테롤을 입력해주세요.">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_sex"><font color ="black">성별</font></label>
+                                        <select name="sex" id="id_sex" class="form-control input-sm">
+                                            <option value="1">남</option>
+                                            <option value="2">여</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_waist"><font color ="black">허리둘레</font></label>
+                                        <input type="number" name="waist" required id="id_waist" class="form-control input-sm" placeholder="허리둘레(cm)">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_fbs"><font color ="black">공복혈당 지수:</font></label>
+                                        <input type="number" name="fbs" required id="id_fbs" class="form-control input-sm" placeholder="LDL 공복혈당을 입력해주세요.">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_systolic_pressure"><font color ="black">수축기 혈압</font></label>
+                                        <input type="number" name="systolic_pressure" required id="id_systolic_pressure" class="form-control input-sm" placeholder="수축기 혈압을 입력해주세요.">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_diastolic_pressure"><font color ="black">이완기 혈압</font></label>
+                                        <input type="number" name="diastolic_pressure" required id="id_diastolic_pressure" class="form-control input-sm" placeholder="이완기 혈압을 입력해주세요.">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_smoke"><font color ="black">흡연 상태</font></label>
+                                        <select name="smoke" id="id_smoke" class="form-control input-sm">
+                                            <option value="1">비흡연</option>
+                                            <option value="2">금연</option>
+                                            <option value="3">흡연</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="id_alcohol_hepatitis"><font color ="black">음주성 간염 상태</font></label>
+                                        <select name="alcohol_hepatitis" id="id_alcohol_hepatitis" class="form-control input-sm">
+                                            <option value="1">알콜성 간염</option>
+                                            <option value="2">정상</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="Register" class="btn btn-info btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+#container1 {
+    background-color: #ffffff;
+}
+
+.centered-form {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.centered-form .panel {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+</style>
+
+
+</body>
+</html>
