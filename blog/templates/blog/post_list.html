@@ -10,29 +10,51 @@
 <body>
   <div id="container"></div>
   <script src="https://code.highcharts.com/highcharts.src.js"></script>
-  <script>
-    Highcharts.chart('container', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: '환자의 질병 위험도'
-        },
-        xAxis: {
-            categories: ['환자']
-        },
-        series: [{
-            name: '당뇨병 위험도',
-            data: [{{a}}]
-        }, {
-            name: '고혈압 위험도',
-            data: [{{f}}]
-        }, {
-            name: '이상지질혈증 위험도',
-            data: [{{k}}]
-        }]
-    });
-  </script>
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
+    },
+    title: {
+        text: '당뇨병 환자 비율'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            depth: 35,
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Browser share',
+        data: [
+            ['Firefox', 45.0],
+            ['IE', 26.8],
+            {
+                name: 'Chrome',
+                y: 12.8,
+                sliced: true,
+                selected: true
+            },
+            ['당뇨병 환자', 6.228],
+            ['정상', 93.7]
+        ]
+    }]
+});
+</script>
 </body>
 </html>
 
