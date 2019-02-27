@@ -92,7 +92,8 @@ def post_data_input(request):
                         }
             data = pd.DataFrame(raw_data)
             a,b,c= test_model(data)
-            return render(request, 'blog/post_result1.html', {'a':a,'b':b,'c':c})
+            mx = int(max(a,b,c))
+            return render(request, 'blog/post_result1.html', {'a':a,'b':b,'c':c,'mx':mx})
     else:
         form = M1_dataForm()
     return render(request, 'blog/post_data_input.html',{'form':form})
