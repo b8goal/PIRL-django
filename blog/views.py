@@ -5,10 +5,8 @@ from .forms import PostForm
 from .forms import M1_dataForm
 from django.shortcuts import redirect
 from .disease_risk import init_risk
-from .resources import TrainResource
 from .test import test_model
 from django.shortcuts import render
-from tablib import Dataset
 import pandas as pd
 
 def post_detail(request, pk):
@@ -58,9 +56,7 @@ def post_edit(request, pk):
 def post_data_input(request):
     if request.method == "POST":
         form = M1_dataForm(request.POST)
-        print(123)
         if form.is_valid():
-            print(456)
             post = form.save(commit=False)
             post.save()
 
@@ -79,11 +75,9 @@ def post_data_input(request):
                         '알콜성간염여부' :[post.alcohol_hepatitis],
                         }
             data = pd.DataFrame(raw_data)
-            print(data)
             a,b,c= test_model(data)
             mx = int(max(a,b,c))
             return render(request, 'blog/post_result1.html', {'a':a,'b':b,'c':c,'mx':mx})
     else:
-        print(789)
         form = M1_dataForm()
     return render(request, 'blog/post_data_input.html',{'form':form})

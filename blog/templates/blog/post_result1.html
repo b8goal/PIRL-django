@@ -1,29 +1,85 @@
 <!DOCTYPE html>
-<style>
-.left-box {
-  background: white;
-  float: left;
-  width: 90%;
-}
-.right-box {
-  background: white;
-  float: right;
-  width: 10%;
-}
-</style>
+{% load staticfiles %}
+{% load static %}
+<html lang="ko">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>AI big data 2조</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.8;
+    color: #000000;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 {
+    background-color: #417690; /* Green  abc9c1*/
+    color: #ffffff;
+  }
+  .bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+  }
+  .bg-4 {
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">AI · Big data B반 2조</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="{% url 'analysis' %}"><font size="4">질병 진단</font></a></li>
+          <li><a href="{% url 'people' %}"><font size="4">people</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
-{% extends 'blog/base.html' %}
-
-{% block content %}
-
-<html>
-    <head>
-      <meta charset="utf-8">
-      <title>Django Highcharts Example</title>
-    </head>
-    <body>
-        <div id="container"></div>
+        <div id="container" style="width: 600px; height: 600px; margin: 0; float:left"></div>
           <script src="https://code.highcharts.com/highcharts.src.js"></script>
           <script>
             Highcharts.chart('container', {
@@ -41,6 +97,14 @@
                         text: '위험도 수치'
                     },
                 },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black'
+                        }
+                    }
+                },
                 series: [{
                     name: '당뇨병 위험도',
                     data: [{{a}}],
@@ -52,13 +116,11 @@
                     data: [{{c}}]
                 }],
             });
-
           </script>
 
-    </body>
-    </html>
 
-    <div>
+
+    <div >
         <h2 id="pageTitle">주요질병 관리</h2>
         <div id="content">
             <div class ="editorContents">
@@ -66,7 +128,7 @@
                     <p style="line-height: 18pt; margin-top: 0px; margin-bottom: 0px;">
 
                         <h4 style="color: rgb(0,0,128);">일상생활 주요질병 관리</h4>
-                        &nbsp주요질병은 치료되는 병이 아니고 조절되는 병 이어서 주요질병에 대한 전반적인 지식습득과 함께 지속적인 관리가 필요합니다.<br><br>
+                        &nbsp주요질병은 치료되는 병이 아니고 조절되는 병 이어서 주요질병에 대한 전반적인 지식습득과 함께 지속적인 관리가 필요합니다.<br>
                         1. 항상 규칙적인 생활을 해야 합니다. (식사시간, 식사량, 숙면시간, 약복용시간)<br>
                         2. 표준체중 조절을 위해 식사요법과 운동요법을 철저히 해야합니다.<br>
                         3. 규칙적으로 병원을 방문해야 합니다.<br>
@@ -97,7 +159,8 @@
             </div>
         </div>
 
-        <div>
+        <div float:"left">
+            <br><br>
             <h4>위험도에 따른 섭취권유 음식</h4>
 
             {% if mx > 90 %}
@@ -122,11 +185,11 @@
             6. 포화 지방의 섭취는 줄이고, 불포화 지방으로 영양을 대체합니다. (올리브유, 들기름 등의 식물성 기름과 견과류(호두, 땅콩, 아몬드))<br>
             7. 평상시 영양성분표를 확인하고, 식사계획서를 작성합니다.<br>
             8. 약물 섭취를 권장합니다.<br>
-            {% elif a > 30 %}
+            {% elif mx > 30 %}
             <h5>위험도 30 ~ 60%</h5>
             양파, 마늘, 땅콩, 녹황색 채소, 팥, 돼지감자, 두릅, 블루베리
             육류보단 등푸른생선 권장
-            {% elif a > 0 %}
+            {% elif mx > 0 %}
             <h5>위험도 0 ~ 30%</h5>
             ' 정상치보다 1단계 높은 '경고'범위에 있습니다. 아래 식이요법을 권고합니다.'<br>
             1. 평소 섬유소가 많은 잡곡류(현미밥, 잡곡밥, 보리밥)를 추천드리며 정제된 탄수화물(흰쌀, 밀가루)의 섭취를 줄이셔야 합니다.<br>
@@ -145,8 +208,51 @@
 
         </div>
 
+        <div float:"right">
+            <br><br>
+            <h4>위험도에 따른 섭취권유 음식</h4>
+
+            {% if mx > 90 %}
+            <h5>위험도 90% 이상</h5>
+            '정상치보다 3단계 높은 '위험'범위에 있습니다. 아래 운동방법을 권고합니다.'<br>
+            1> 기초 대사량을 조절하기 위해 주 4~5일, 20~30분 가벼운 유산소 운동을 추천드립니다.<br>
+            2> 건강상태가 좋지 않은 환자는 서서히 운동 강도를 높여야 합니다. 초기 2~6주간은 주 3회 정도 스트레칭과 가벼운 체조를 하면서 횟수와 강도를 높이길 권장합니다.<br>
+            3> 몸에 충격을 주거나 격렬한 운동은 자제하셔야 합니다.<br>
+            4> 운동 전후 준비운동과 정리운동을 권장합니다.<br>
+            5> 운동별 칼로리표를 참조하여 일일 운동계획 및 수행표를 기록하시길 권장합니다.<br>
+
+
+            {% elif mx > 60 %}
+            '정상치보다 3단계 높은 '위험'범위에 있습니다. 아래 운동방법을 권고합니다.'<br>
+            1> 기초 대사량을 조절하기 위해 주 4~5일, 15~25분 유산소 운동을 추천드립니다.<br>
+            2> 심혈관질환을 낮추기 위해 주 2회 근력운동을 권장합니다.<br>
+            3> 몸에 충격을 주거나 격렬한 운동은 자제하셔야 합니다.<br>
+            4> 운동 전후 준비운동과 정리운동을 권장합니다.<br>
+            5> 운동별 칼로리표를 참조하여 일일 운동계획 및 수행표를 기록하시길 권장합니다.<br>
+
+            {% elif mx > 30 %}
+            <h5>위험도 30 ~ 60%</h5>
+            '정상치보다 2단계 높은 '약한 위험'범위에 있습니다. 아래 운동방법을 권고합니다.'<br>
+            1> 기초 대사량을 조절하기 위해 주 3~4일, 10~15분 유산소 운동을 추천드립니다.<br>
+            2> 심혈관질환을 낮추기 위해 주 3회 근력운동을 권장합니다.<br>
+
+            {% elif mx > 0 %}
+            <h5>위험도 0 ~ 30%</h5>
+            1> 기초 대사량을 조절하기 위해 주 2~3일, 8~10분 유산소 운동을 추천드립니다.<br>
+            2> 심혈관질환을 낮추기 위해 주 3회 근력운동을 권장합니다.<br>
+
+            {% else %}
+            <h5>위험도 0% 이하</h5>
+            위험도 0% 이하<br>
+            '운동습관 관리가 필요한 위험범위에 있지 않습니다. 가족력이 있다면, 꾸준한 운동을 통한 관리를 권장합니다.'<br>
+
+            {% endif %}
+
+        </div>
+
 
     </div>
 
-{% endblock %}
 
+</body>
+</html>
